@@ -44,7 +44,8 @@ flowchart TD
     G --> H[Bokeh Visualization]
     G --> I[Optional Rerouting Suggestions]
 
- Architecture & Workflow
+
+Architecture & Workflow
 This project follows a modular, real-time simulation pipeline for intelligent parking price adjustments.
 
 1. Data Source
