@@ -35,19 +35,12 @@ Key objectives:
 
 ```mermaid
 flowchart TD
-    subgraph Real-Time Stream
-        A[Raw Dataset (CSV)] --> B[Pathway Streaming Engine]
-    end
+    A[Raw Dataset CSV] --> B[Pathway Streaming Engine]
+    B --> C[Data Preprocessing]
+    C --> D[Model 1: Linear Pricing]
+    C --> E[Model 2: Demand-Based Pricing]
+    C --> F[Model 3: Competitive Pricing]
+    D & E & F --> G[Pricing Output Table]
+    G --> H[Bokeh Visualization]
+    G --> I[Optional Rerouting Suggestions]
 
-    subgraph Processing Logic
-        B --> C[Data Preprocessing (Timestamp Sort)]
-        C --> D[Model 1: Linear Pricing]
-        C --> E[Model 2: Demand-Based Pricing]
-        C --> F[Model 3: Competitive Pricing]
-    end
-
-    subgraph Output
-        D & E & F --> G[Pricing Output Table]
-        G --> H[Bokeh Visual Dashboard]
-        G --> I[Optional Rerouting Suggestions]
-    end
