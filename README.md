@@ -44,3 +44,61 @@ flowchart TD
     G --> H[Bokeh Visualization]
     G --> I[Optional Rerouting Suggestions]
 
+ Architecture & Workflow
+This project follows a modular, real-time simulation pipeline for intelligent parking price adjustments.
+
+1. Data Source
+CSV containing 73 days of data from 14 parking lots, sampled every 30 minutes.
+
+Features include: occupancy, capacity, queue_length, traffic_level, vehicle_type, is_special_day, latitude, longitude.
+
+2. Pathway Streaming Engine
+Simulates real-time ingestion of data row-by-row.
+
+Maintains timestamp order to reflect actual event timing.
+
+3. Data Preprocessing
+Cleans and transforms data before modeling.
+
+Tasks include:
+
+Timestamp parsing
+
+Normalizing vehicle_type
+
+Computing geographic distances (for Model 3)
+
+4. Pricing Models
+Model 1 (Baseline Linear):
+
+Price increases linearly with occupancy ratio.
+
+Model 2 (Demand-Based):
+
+Considers occupancy, queue length, traffic, special day, and vehicle weight.
+
+Model 3 (Competitive Pricing) (optional):
+
+Adjusts pricing based on competitor lot prices and proximity.
+
+5. Output Generation
+All predictions logged in a dynamic table (timestamp, lot_id, price, etc.).
+
+Acts as source for downstream visualizations.
+
+6. Real-Time Visualization
+Built using Bokeh for interactive dashboards.
+
+Price over time
+
+Occupancy correlation
+
+Nearby lot comparisons
+
+7. Optional: Rerouting Logic
+Suggests alternative lots when:
+
+Current lot is full
+
+Nearby lots are cheaper or underutilized
+
