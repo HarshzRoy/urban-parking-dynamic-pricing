@@ -43,6 +43,7 @@ flowchart TD
     D & E & F --> G[Pricing Output Table]
     G --> H[Bokeh Visualization]
     G --> I[Optional Rerouting Suggestions]
+```
 
 
 Architecture & Workflow
